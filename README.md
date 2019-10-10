@@ -15,7 +15,7 @@ Up Docker container.
 $ docker-compose up
 ```
 
-## Initialize database
+## Initialize database (First time only)
 
 Open another console
 
