@@ -15,50 +15,13 @@ Up Docker container.
 $ docker-compose up
 ```
 
-# Create databases
+## Initialize database
 
-Open another console and run this to initialize database.
-
-```console
-$ cd docker-rails-example/
-$ docker-compose exec rails rake db:create db:migrate db:seed
-```
-
-Open in browser.
-
-- [`http://localhost:3000/`](http://localhost:3000/)
-
-To stop, in the console where `docker-compose` is running, hit `Ctrl + C` and wait.
-
-```console
-Gracefully stopping... (press Ctrl+C again to force)
-Stopping docker-rails-example_rails_1   ... done
-Stopping docker-rails-example_db_1      ... done
-
-$
-```
-
-## Stop docker server
-
-Try to stop the containers by holding `Ctrl-C` in the console. Closing process may take time. Be patient.
-
-```console
-Gracefully stopping... (press Ctrl+C again to force)
-Stopping docker-rails-example_rails_1   ... done
-Stopping docker-rails-example_db_1      ... done
-
-$
-```
-
-If you get how to up and end it, up again and move on to the next.
-
-## Open another console
+Open another console
 
 Keep the Docker containers running.
 
 While they are running, you need to open a new console to work.
-
-## Initialize database
 
 In the 2nd console just you opened, type following line to create database while running `docker-compose up` in the 1st one.
 
@@ -74,6 +37,18 @@ Open [`http://localhost:3000/`](http://localhost:3000/) and look at what you hav
 
 ![Welcome screen from Rails](doc/you-are-on-rails.png)
 
+## Stop docker server
+
+Try to stop the containers by holding `Ctrl-C` in the console. Closing process may take time. Be patient.
+
+```console
+Gracefully stopping... (press Ctrl+C again to force)
+Stopping docker-rails-example_rails_1   ... done
+Stopping docker-rails-example_db_1      ... done
+
+$
+```
+
 # Up your project from the next time
 
 Now it's simple.
@@ -84,7 +59,7 @@ $ docker-compose up
 
 And open [`http://localhost:3000/`](http://localhost:3000/).
 
-You may need the 2nd console to run commands like `rails g scaffold`.
+
 
 # Update your project
 
@@ -159,41 +134,3 @@ rails_1  |      from /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.7/lib/bund
 ...
 rails_1  |      from /usr/local/bundle/bin/rails:15:in `<main>'
 ```
-
-# Join somebody's project
-
-These steps should be described in the project's README documentation.
-
-1. Clone the repository
-2. Up Docker containers
-3. Initialize database
-4. Start your job
-
-## Clone the repository
-
-```console
-$ git clone ...
-$ cd xxx
-```
-
-## Up Docker containers
-
-```console
-$ docker-compose up
-```
-
-Hold `Ctrl-C` to stop.
-
-## Initialize database
-
-Open another console and run:
-
-```console
-$ docker-compose exec rails rake db:create db:migrate db:seed
-```
-
-## Start your job
-
-Open [`http://localhost:3000/`](http://localhost:3000/) (and another console maybe) and start your job.
-
-Let's rock!
