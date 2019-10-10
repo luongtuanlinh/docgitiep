@@ -1,37 +1,21 @@
-# Rails on Docker example and tutorial
-
-[→日本語🇯🇵](./README.ja.md)
-
 This is an example and tutorial to build and run your Rails app on Docker.
-
-## For Windows users
-
-Replace `` `pwd` `` with `%CD%` in your Command Prompt or PowerShell.
-
-Otherwise you would see an error like following:
-
-> docker: Error response from daemon: create \`pwd\`/app: “`pwd`/app” includes invalid characters for a local volume name, only “[a-zA-Z0-9][a-zA-Z0-9_.-]” are allowed. If you intended to pass a host directory, use absolute path.
 
 # Preparation
 
 You need followings:
 
-- Docker installed
+- Docker installed: [Link](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- Docker compose installed: [Link](https://docs.docker.com/compose/install/)
 
-# Try this example
-
-Clone this repository.
-
-```console
-$ git clone git@github.com:ginpei/docker-rails-example.git
-$ cd docker-rails-example/
-```
+# Run project
 
 Up Docker container.
 
 ```console
 $ docker-compose up
 ```
+
+# Create databases
 
 Open another console and run this to initialize database.
 
@@ -54,212 +38,7 @@ Stopping docker-rails-example_db_1      ... done
 $
 ```
 
-# Create a new Rails app
-
-1. Prepare a directory for the app
-2. Run `rails new` in Docker
-3. Describe a Docker image for your app where gems are installed
-4. Database configuration
-5. Prepare Docker component file with database specification
-6. Ignore database files
-7. Up them
-8. Stop them (once)
-9. Open another console
-10. Initialize database
-11. Open in browser
-
-We name the app "my-great-app".
-Please do not forget replace this with your great app's name.
-
-Directory structure would be this:
-
-```
-my-great-app/
-+ app/
-|  - (Rails app files like `config.ru`)
-+ db/
-|  - (Database files)
-+ .gitignore
-+ docker-compose.yml
-+ Dockerfile
-+ README.md
-```
-
-## Prepare a directory for the app
-
-```console
-$ mkdir my-great-app
-$ cd my-great-app
-```
-
-We will be working here.
-
-## Run `rails new` in Docker
-
-This step can be broken down into smaller steps.
-
-1. Start docker container
-2. `rails new`
-3. Create empty `Gemfile.lock`
-4. Expose created files to your host computer
-5. Exit from docker container
-
-First of all, run a docker container:
-
-```console
-$ mkdir app
-$ docker run --rm -ti -v `pwd`/app:/app rails:5.0.1 bash
-```
-
-`5.0.1` is a tag of the image, as Rails version. Find available tags here:
-
-- [library/rails - Docker Hub](https://hub.docker.com/r/library/rails/tags/)
-
-This should take long time when you try at the first time since Docker downloads a Docker image of Rails. From next time, it would up soon.
-
-Then you'll see you are in docker container. You may want to check the rails version:
-
-```console
-root@b4227fbcb3b1:/# rails --version
-Rails 5.0.1
-root@b4227fbcb3b1:/#
-```
-
-Note that, inside a Docker container, you cannot use `Ctrl-P`. This is a special key for Docker.
-
-In the container, run `rails new` with some options.
-
-```console
-root@b4227fbcb3b1:/# rails new my-great-app --skip-bundle --database=mysql
-      create
-      create  README.md
-      create  Rakefile
-      create  config.ru
-...
-      create  vendor/assets/stylesheets
-      create  vendor/assets/stylesheets/.keep
-      remove  config/initializers/cors.rb
-root@b4227fbcb3b1:/#
-```
-
-`--skip-bundle` option, as you read, skips `bundle install`.
-The installation will happen later so you don't do that for now.
-
-`--database` option is up to you.
-In this tutorial, we chose MySQL as the DBMS for our Rails app.
-
-Since we skipped `bundle install`, we need empty lock file for after operation.
-
-```console
-$ touch /my-great-app/Gemfile.lock
-```
-
-To expose result to you host computer, move the generated files to the shared volume. And exit.
-
-```console
-root@b4227fbcb3b1:/# cp -rT my-great-app/* /app
-root@b4227fbcb3b1:/# exit
-```
-
-`-T` option of `cp` is to copy dot files (`.gitignore`).
-
-(The reason we didn't generate files directly in `/app` is Rails generates files using the directory name with template. Please let me know if you know the way to do that directly.)
-
-Check the files exist on your computer outside Docker container.
-
-```console
-$ ls -a app/
-.   .gitignore  Gemfile.lock  Rakefile  bin     config.ru  lib  public  tmp
-..  Gemfile     README.md     app       config  db         log  test    vendor
-```
-
-## Describe an image for your app where gems are installed
-
-Create a new file named `Dockerfile`, which has no extension:
-
-```dockerfile
-FROM rails:5.0.1
-
-RUN mkdir /app
-WORKDIR /app
-
-COPY ./app/Gemfile /app/Gemfile
-COPY ./app/Gemfile.lock /app/Gemfile.lock
-
-RUN bundle install
-CMD rm /app/tmp/pids/server.pid ; rails s
-```
-
-## Database configuration
-
-Although we haven't got database ready yet, modify rails configuration a little.
-
-Change `host: localhost` to `host: db` in `app/config/database.yml`:
-
-```yml
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: 5
-  username: root
-  password:
-  host: db
-```
-
-This `db` will be used in the next step as a service name in `docker-compose.yml`.
-
-## Prepare Docker component file with database specification
-
-Create a new file named `docker-compose.yml` as following:
-
-```yml
-version: "3"
-
-services:
-
-  rails:
-    build: ./
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./app:/app
-    depends_on:
-      - db
-
-  db:
-    image: mysql
-    volumes:
-      - ./db:/var/lib/mysql
-    environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
-```
-
-This prepares a database for root user without password.
-It's unsafe in some cases but you know this is only for development.
-
-## Ignore database files
-
-If you use git, create `.gitignore`  and ignore database files:
-
-```
-/db/
-```
-
-## Up them
-
-```console
-$ docker-compose up
-```
-
-This takes longer time for the first time too.
-
-First, it builds an image from your `Dockerfile` for your project. This process includes `bundle install`.
-
-Second, after starting, MySQL creates database files in `db`.
-
-Take your time until your console gets calm down.
-
-## Stop them (once)
+## Stop docker server
 
 Try to stop the containers by holding `Ctrl-C` in the console. Closing process may take time. Be patient.
 
