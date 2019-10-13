@@ -134,3 +134,15 @@ rails_1  |      from /usr/local/lib/ruby/gems/2.3.0/gems/bundler-1.13.7/lib/bund
 ...
 rails_1  |      from /usr/local/bundle/bin/rails:15:in `<main>'
 ```
+
+## Enter container bash
+
+```console
+$ docker-compose exec rails bash
+```
+
+## Exit container bash
+
+```console
+root@9c8cecc436ff:/app# exit
+```
