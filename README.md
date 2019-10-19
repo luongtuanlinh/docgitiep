@@ -33,7 +33,7 @@ Created database 'recipe_test'
 
 ## Open in browser
 
-Open [`http://localhost:8081/`](http://localhost:8081/) and look at what you have done! Yay! You’re on Rails!
+Open [`http://localhost:8080/`](http://localhost:8080/) and look at what you have done! Yay! You’re on Rails!
 
 
 ## Open in AWS cloud9 preview
@@ -45,7 +45,7 @@ Open [`http://localhost:8081/`](http://localhost:8081/) and look at what you hav
 
 ## PhpAdmin
 
-PhpAdmin running at port 8081 ( [`http://localhost:8080/`](http://localhost:8080/) or :8081 port relative to cloud9 domain )
+PhpAdmin running at port 8081 ( [`http://localhost:8081/`](http://localhost:8081/) or :8081 port relative to cloud9 domain )
 
 User: root
 
