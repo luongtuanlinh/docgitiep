@@ -60,7 +60,7 @@ Now it's simple.
 $ docker-compose up
 ```
 
-And open [`http://localhost:3000/`](http://localhost:3000/).
+And open [`http://localhost:8080/`](http://localhost:8080/).
 
 
 ## Stop docker server
