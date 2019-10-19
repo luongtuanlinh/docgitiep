@@ -27,15 +27,41 @@ In the 2nd console just you opened, type following line to create database while
 
 ```console
 $ docker-compose exec rails rake db:create
-Created database 'my-great-app_development'
-Created database 'my-great-app_test'
+Created database 'recipe_development'
+Created database 'recipe_test'
 ```
 
 ## Open in browser
 
-Open [`http://localhost:3000/`](http://localhost:3000/) and look at what you have done! Yay! You’re on Rails!
+Open [`http://localhost:8081/`](http://localhost:8081/) and look at what you have done! Yay! You’re on Rails!
 
-![Welcome screen from Rails](doc/you-are-on-rails.png)
+
+## Open in AWS cloud9 preview
+
+1. Click `Preview` button
+2. Choose `Preview running application`
+3. Click `Pop out into new Window` (up-right corner)
+
+
+## PhpAdmin
+
+PhpAdmin running at port 8081 ( [`http://localhost:8080/`](http://localhost:8080/) or :8081 port relative to cloud9 domain )
+
+User: root
+
+Password: root
+
+
+# Up your project from the next time
+
+Now it's simple.
+
+```console
+$ docker-compose up
+```
+
+And open [`http://localhost:3000/`](http://localhost:3000/).
+
 
 ## Stop docker server
 
@@ -48,17 +74,6 @@ Stopping docker-rails-example_db_1      ... done
 
 $
 ```
-
-# Up your project from the next time
-
-Now it's simple.
-
-```console
-$ docker-compose up
-```
-
-And open [`http://localhost:3000/`](http://localhost:3000/).
-
 
 
 # Update your project
