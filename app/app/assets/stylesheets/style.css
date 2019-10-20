@@ -482,6 +482,13 @@ h3 {
           border: none;
           color: #ffffff;
           cursor: pointer; }
+
+  .header-area .logo img {
+    max-height: 50px;
+  }
+  .header-area .logo:hover {
+    background: transparent;
+  }
   .header-area .logo-area {
     position: relative;
     z-index: 1;
@@ -1654,4 +1661,3 @@ h3 {
 
 /* ====== The End ====== */
 
-/*# sourceMappingURL=style.css.map */

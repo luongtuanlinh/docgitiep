@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-foods = Food.create([
+recipes = Recipe.create([
   { 
     name: 'Steak with boiled vegetables',
     time_to_cook: 1.5,

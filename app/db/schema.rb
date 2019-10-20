@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191020024311) do
+ActiveRecord::Schema.define(version: 2019_10_20_051632) do
 
-  create_table "foods", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.float    "time_to_cook", limit: 24
-    t.integer  "energy"
-    t.text     "ingredient",   limit: 65535
-    t.text     "recipe",       limit: 65535
-    t.string   "image"
-    t.boolean  "is_premium"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.float "time_to_cook"
+    t.integer "energy"
+    t.text "ingredient"
+    t.text "recipe"
+    t.string "image"
+    t.boolean "is_premium"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
