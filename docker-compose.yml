@@ -10,6 +10,7 @@ services:
       - ./app:/app
     depends_on:
       - db
+    user: ${CURRENT_UID}
 
   db:
     image: mysql:5.7
