@@ -25,7 +25,7 @@
           <!-- Blog Content -->
           <div class="blog-content">
             <a href="#" class="post-tag">The Best</a>
-            <a href="#" class="post-title"><%= recipe.name %></a>
+            <%= link_to recipe.name, recipe_path(recipe), class: "post-title"  %>
             <div class="post-meta">
               <a href="#" class="post-date"><%= recipe.created_at %></a>
               <a href="#" class="post-author">By Julia Stiles</a>
