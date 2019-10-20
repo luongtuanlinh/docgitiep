@@ -1,25 +1,25 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: [:show]
+
+  # GET /recipes
+  # GET /recipes.json
   def index
-
+    @recipes = Recipe.all
   end
 
-  def single
-    render "recipes/single-post"
+  # GET /recipes/1
+  # GET /recipes/1.json
+  def show
   end
 
-  def category_post
-    render "recipes/catagory-post"
-  end
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_recipe
+      @recipe = Recipe.find(params[:id])
+    end
 
-  def category
-    render "recipes/catagory"
-  end
-
-  def contact
-    render "recipes/contact"
-  end
-
-  def recipe
-    render "recipes/receipe"
-  end
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def recipe_params
+      params.fetch(:recipe, {})
+    end
 end
