@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :recipes, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :recipes, only: [:index, :show]
 
   get '/', action: :index, controller: 'homepage'
   get 'single', action: :single, controller: 'homepage'
