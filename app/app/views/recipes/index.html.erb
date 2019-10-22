@@ -24,11 +24,10 @@
           </div>
           <!-- Blog Content -->
           <div class="blog-content">
-            <a href="#" class="post-tag">The Best</a>
+            <a href="#" class="post-tag"><%= recipe.category.name %></a>
             <%= link_to recipe.name, recipe_path(recipe), class: "post-title"  %>
             <div class="post-meta">
               <a href="#" class="post-date"><%= recipe.created_at %></a>
-              <a href="#" class="post-author">By Julia Stiles</a>
             </div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra
               non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis
