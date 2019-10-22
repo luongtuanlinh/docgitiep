@@ -40,4 +40,15 @@ ActiveRecord::Schema.define(version: 2019_10_22_070400) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "user_name", null: false
+    t.string "email", null: false
+    t.string "password", null: false
+    t.string "user_image", default: ""
+    t.boolean "is_premium", default: false
+    t.datetime "premium_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

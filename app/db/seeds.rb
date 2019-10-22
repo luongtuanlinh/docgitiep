@@ -33,7 +33,7 @@ categories = Category.create([
 # Seed recipes
 categories.each do |category|
   recipes = Recipe.create([
-    { 
+    {
       name: 'Steak with boiled vegetables',
       time_to_cook: 1.5,
       energy: 2000,
@@ -42,7 +42,7 @@ categories.each do |category|
       is_premium: false,
       category: category
     },
-    { 
+    {
       name: 'Friend eggs with ham',
       time_to_cook: 1.5,
       energy: 2000,
@@ -51,7 +51,7 @@ categories.each do |category|
       is_premium: false,
       category: category
     },
-    { 
+    {
       name: 'Friend eggs with ham',
       time_to_cook: 1.5,
       energy: 2000,
@@ -60,7 +60,7 @@ categories.each do |category|
       is_premium: false,
       category: category
     },
-    { 
+    {
       name: 'Mushrooms with pork chop',
       time_to_cook: 1.5,
       energy: 2000,
@@ -106,4 +106,12 @@ categories.each do |category|
       }
     ])
   end
-end 
+end
+
+users = User.create([
+  {
+    user_name: 'admin',
+    email: 'admin@gmail.com',
+    password: 'password'
+  }
+])
