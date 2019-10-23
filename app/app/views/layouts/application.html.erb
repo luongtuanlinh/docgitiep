@@ -67,64 +67,24 @@
                   <ul>
                     <li><%= link_to("Home", home_url) %></li>
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Pages</a>
+                    <li><a href="#">Categories</a>
                       <ul class="dropdown">
-                        <li><%= link_to("Home", home_url)  %></li>
-                        <!-- <li><a href="/">Home</a></li> -->
-                        <li><a href="catagory.html">Catagory</a></li>
-                        <li><a href="catagory-post.html">Catagory Post</a></li>
-                        <li><a href="single-post.html">Single Post</a></li>
-                        <li><a href="receipe.html">Recipe</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <% Category.all.each do |category| %>
+                        <li><%= link_to(category.name, "#")  %></li>
+                        <% end %>
                       </ul>
                     </li>
-                    <li><a href="#">Recipes</a>
-                      <div class="megamenu">
-                        <ul class="single-mega cn-col-4">
-                          <li><a href="#">- Recipe</a></li>
-                          <li><a href="#">- Bread</a></li>
-                          <li><a href="#">- Breakfast</a></li>
-                          <li><a href="#">- Meat</a></li>
-                          <li><a href="#">- Fastfood</a></li>
-                          <li><a href="#">- Salad</a></li>
-                          <li><a href="#">- Soup</a></li>
-                        </ul>
-                        <ul class="single-mega cn-col-4">
-                          <li><a href="#">- Recipe</a></li>
-                          <li><a href="#">- Bread</a></li>
-                          <li><a href="#">- Breakfast</a></li>
-                          <li><a href="#">- Meat</a></li>
-                          <li><a href="#">- Fastfood</a></li>
-                          <li><a href="#">- Salad</a></li>
-                          <li><a href="#">- Soup</a></li>
-                        </ul>
-                        <ul class="single-mega cn-col-4">
-                          <li><a href="#">- Recipe</a></li>
-                          <li><a href="#">- Bread</a></li>
-                          <li><a href="#">- Breakfast</a></li>
-                          <li><a href="#">- Meat</a></li>
-                          <li><a href="#">- Fastfood</a></li>
-                          <li><a href="#">- Salad</a></li>
-                          <li><a href="#">- Soup</a></li>
-                        </ul>
-                        <ul class="single-mega cn-col-4">
-                          <li><a href="#">- Recipe</a></li>
-                          <li><a href="#">- Bread</a></li>
-                          <li><a href="#">- Breakfast</a></li>
-                          <li><a href="#">- Meat</a></li>
-                          <li><a href="#">- Fastfood</a></li>
-                          <li><a href="#">- Salad</a></li>
-                          <li><a href="#">- Soup</a></li>
-                        </ul>
-                      </div>
-                    </li>
-                    <li><a href="single-post.html">Blog</a></li>
+                    <li><a href="/recipes">Recipes</a></li>
                     <li><a href="contact.html">Contact</a></li>
                   </ul>
 
                   <!-- Login/Register -->
                   <div class="login-area">
-                    <%= link_to("Login / Register","/users/sign_in") %> 
+                    <% if user_signed_in? %>
+                      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+                    <% else %>
+                      <%= link_to("Login / Register","/users/sign_in") %> 
+                    <% end %>
                   </div>
                 </div>
                 <!-- Nav End -->
