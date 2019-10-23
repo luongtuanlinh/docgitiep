@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :recipes, only: [:index, :show]
 
-  get '/', action: :index, controller: 'homepage'
+  get '/', action: :index, controller: 'homepage', as: 'home'
   get 'single', action: :single, controller: 'homepage'
   get 'category-post', action: :category_post, controller: 'homepage'
   get 'category', action: :category, controller: 'homepage'
