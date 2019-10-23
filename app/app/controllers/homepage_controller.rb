@@ -1,6 +1,8 @@
 class HomepageController < ApplicationController
   def index
-    render "template/index"
+    page = params[:page] ? params[:page] : 1
+    @recipes = Recipe.all.page page
+    render "template/home"
   end
 
   def single
