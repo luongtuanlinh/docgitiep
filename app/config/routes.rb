@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get '/', action: :index, controller: 'recipes'
-  get 'single', action: :single, controller: 'recipes'
-  get 'category-post', action: :category_post, controller: 'recipes'
-  get 'category', action: :category, controller: 'recipes'
-  get 'contact', action: :contact, controller: 'recipes'
-  get 'recipe', action: :recipe, controller: 'recipes'
+
+  resources :recipes, only: [:index, :show]
+
+  get '/', action: :index, controller: 'homepage', as: 'home'
+  get 'single', action: :single, controller: 'homepage'
+  get 'category-post', action: :category_post, controller: 'homepage'
+  get 'category', action: :category, controller: 'homepage'
+  get 'contact', action: :contact, controller: 'homepage'
+  get 'recipe', action: :recipe, controller: 'homepage'
 end
