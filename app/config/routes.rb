@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admins/index'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
   get 'category', action: :category, controller: 'homepage'
   get 'contact', action: :contact, controller: 'homepage'
   get 'recipe', action: :recipe, controller: 'homepage'
+  get 'admin', action: :index, controller: 'admins'
 end

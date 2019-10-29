@@ -24,4 +24,5 @@ class HomepageController < ApplicationController
   def recipe
     render "template/receipe"
   end
+  
 end
