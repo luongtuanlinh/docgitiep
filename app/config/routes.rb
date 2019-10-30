@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   get 'category', action: :category, controller: 'homepage'
   get 'contact', action: :contact, controller: 'homepage'
   get 'recipe', action: :recipe, controller: 'homepage'
+
+  post 'password/forgot', action: :forgot, controller: 'passwords'
+  post 'password/reset', action: :reset, controller: 'passwords'
+  get 'password/reset', action: :reset_new_password, controller: 'passwords'
 end
