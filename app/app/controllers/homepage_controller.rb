@@ -1,8 +1,8 @@
 class HomepageController < ApplicationController
   def index
     page = params[:page] ? params[:page] : 1
-    @recipes = Recipe.all.page page
-    render "template/home"
+    @recipes = Recipe.offset(Recipe.count - 6).limit(6) # Random 6 recommended recipe
+    render "homepage/home"
   end
 
   def single

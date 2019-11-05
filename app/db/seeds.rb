@@ -107,11 +107,3 @@ categories.each do |category|
     ])
   end
 end
-
-users = User.create([
-  {
-    user_name: 'admin',
-    email: 'admin@gmail.com',
-    password: 'password'
-  }
-])
