@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   post 'password/forgot', action: :forgot, controller: 'passwords'
   post 'password/reset', action: :reset, controller: 'passwords'
   get 'password/reset', action: :reset_new_password, controller: 'passwords'
+<<<<<<< HEAD
 
   post 'comments/reply', action: :create_reply, controller: 'comments'
+=======
+>>>>>>> 69ca9d308a567597f01d8c01fcc91edab9198c85
 end
