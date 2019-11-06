@@ -65,7 +65,7 @@
             <!-- Comment Meta -->
             <div class="comment-meta">
               <div class="d-flex">
-                <a href="#" class="post-author"><%= comment.user.email %></a>
+                <a href="#" class="post-author"><%= comment.user.username %></a>
                 <a href="#" class="post-date"><%= comment.created_at.strftime("%d %b, %Y %H:%M") %></a>
                 <% if user_signed_in? %>
                 <% if comment.user_id == current_user.id %>
@@ -109,7 +109,7 @@
                 <!-- Comment Meta -->
                 <div class="comment-meta">
                   <div class="d-flex">
-                    <a href="#" class="post-author"><%= reply.user.email%></a>
+                    <a href="#" class="post-author"><%= reply.user.username%></a>
                     <a href="#" class="post-date"><%= reply.created_at.strftime("%d %b, %Y %H:%M")%></a>
                     <% if user_signed_in? %>
                     <% if reply.user_id == current_user.id %>
