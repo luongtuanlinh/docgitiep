@@ -25,11 +25,10 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
-    @comments = @recipe.comments.all
+    @comments = @recipe.comments.all.order('created_at DESC')
     @comment = @recipe.comments.build
     
   end
-
 private
   def search_query
     params[:query]
