@@ -48,44 +48,6 @@ private
     end
   end
 
-<<<<<<< HEAD
-  def ingredient_search
-    return nil if search_type.present? && search_type != 'ingredient'
-    
-    if search_query.present?
-      return Ingredient.where('name LIKE ?', "%#{search_query}%")
-=======
-private
-  def search_query
-    params[:query]
-  end
-
-  def search_type
-    params[:type]
-  end
-
-  def category_search
-    return nil if search_type.present? && search_type != 'category'
-    
-    if search_query.present?
-      return Category.where('name LIKE ?', "%#{search_query}%")
->>>>>>> 69ca9d308a567597f01d8c01fcc91edab9198c85
-    else
-      return nil
-    end
-  end
-
-<<<<<<< HEAD
-  def recipe_search
-    return nil if search_type.present? && search_type != 'recipe'
-    if search_query.present?
-      return Recipe.where('name LIKE ?', "%#{search_query}%")
-    else
-      return Recipe.all
-    end
-  end
-
-=======
   def ingredient_search
     return nil if search_type.present? && search_type != 'ingredient'
     
@@ -105,7 +67,6 @@ private
     end
   end
 
->>>>>>> 69ca9d308a567597f01d8c01fcc91edab9198c85
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
