@@ -31,6 +31,14 @@ Created database 'recipe_development'
 Created database 'recipe_test'
 ```
 
+```console
+$ docker-compose exec rails rake db:migrate
+```
+
+```console
+$ docker-compose exec rails rake db:seed
+```
+
 ## Open in browser
 
 Open [`http://localhost:8080/`](http://localhost:8080/) and look at what you have done! Yay! You’re on Rails!

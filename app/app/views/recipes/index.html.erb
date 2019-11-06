@@ -1,137 +1,64 @@
-<% content_for :head do %>
-  <style>
-    .custom-h3 {
-      color: black;
-      width: auto;
-    }
-  </style>
-<% end %>
-
 <!-- ##### Posts Area End ##### -->
 <div class="bueno-post-area mb-70">
   <div class="container">
     <div class="row justify-content-center">
       
       <!-- Post Area -->
-      <div class="col-12 col-lg-8 col-xl-9 mt-50 order-lg-2">
-        <h3 class="custom-h3 mb-30">Recipe list</h3>
-        <!-- Single Blog Post -->
-        <% @recipes.each do |recipe| %>
-        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
-          <!-- Blog Thumbnail -->
-          <div class="blog-thumbnail">
-            <img src="<%= recipe.image %>" alt="">
-          </div>
-          <!-- Blog Content -->
-          <div class="blog-content">
-            <a href="#" class="post-tag"><%= recipe.category.name %></a>
-            <%= link_to recipe.name, recipe_path(recipe), class: "post-title"  %>
-            <div class="post-meta">
-              <a href="#" class="post-date"><%= recipe.created_at %></a>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra
-              non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis
-              arcu tempus.</p>
-          </div>
-        </div>
-        <%end %>
-
-        <%= paginate @recipes %>
+      <div class="col-12 col-lg-9 col-xl-10 mt-100 order-lg-2">
+        <% if not @recipe_hash[:category].nil? %>
+          <% recipes = @recipe_hash[:category] %>
+          <a href="<%= recipes_path params: {query: @search_query, type: :category} %>">
+            <h3 class="custom-h3 mb-30 text-left">
+              Category: <strong><%= @search_query %></strong>
+            </h3>
+          </a>
+          <%= render 'recipe_list', recipes: recipes %>
+          <%= paginate recipes, params: {type: :category} %>
+        <% end %>
+        <% if not @recipe_hash[:ingredient].nil? %>
+          <% recipes = @recipe_hash[:ingredient] %>
+          <a href="<%= recipes_path params: {query: @search_query, type: :ingredient} %>">
+            <h3 class="custom-h3 mb-30 text-left">
+              Ingredient: <strong><%= @search_query %></strong>
+            </h3>
+          </a>
+          <%= render 'recipe_list', recipes: recipes %>
+          <%= paginate recipes, params: {type: :ingredient} %>
+        <% end %>
+        <% if not @recipe_hash[:recipe].nil? %>
+          <% recipes = @recipe_hash[:recipe] %>
+          <a href="<%= recipes_path params: {query: @search_query, type: :recipe} %>">
+            <h3 class="custom-h3 mb-30 text-left">
+              Recipe: 
+              <% if @search_query.present? %>
+                <strong><%= @search_query %></strong>
+              <% end %>
+            </h3>
+          </a>
+          <%= render 'recipe_list', recipes: @recipe_hash[:recipe] %>
+          <%= paginate recipes, params: {type: :recipe} %>
+        <% end %>
       </div>
 
       <!-- Sidebar Area -->
-      <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 mt-50 order-lg-1">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-2 mt-100 order-lg-1">
           <div class="sidebar-area">
             <div class="single-widget-area add-widget mb-30">
-              <h3 class="custom-h3">Categories</h3>
+              <h3 class="custom-h3 text-left">Categories</h3>
             </div>
-            <!-- Single Widget Area -->
-            <div class="single-widget-area add-widget mb-30">
-              <img src="assets/bg-img/add.png" alt="">
-            </div>
-  
             <!-- Single Widget Area -->
             <div class="single-widget-area post-widget">
-  
-              <!-- Single Post Area -->
-              <div class="single-post-area d-flex">
-                <!-- Blog Thumbnail -->
-                <div class="blog-thumbnail">
-                  <img src="assets/bg-img/12.jpg" alt="">
-                </div>
-                <!-- Blog Content -->
-                <div class="blog-content">
-                  <a href="#" class="post-title">Friend eggs with ham</a>
-                  <div class="post-meta">
-                    <a href="#" class="post-date">July 11, 2018</a>
-                    <a href="#" class="post-author">By Julia Stiles</a>
+              <% Category.all.each do |category| %>
+                <!-- Single Post Area -->
+                <div class="single-post-area d-flex">
+                  <!-- Blog Content -->
+                  <div class="blog-content">
+                    <a href="<%= recipes_path params: {query: category.name, type: :category} %>" class="post-title">
+                      <%= category.name %>
+                    </a>
                   </div>
                 </div>
-              </div>
-  
-              <!-- Single Post Area -->
-              <div class="single-post-area d-flex mb-30">
-                <!-- Blog Thumbnail -->
-                <div class="blog-thumbnail">
-                  <img src="assets/bg-img/13.jpg" alt="">
-                </div>
-                <!-- Blog Content -->
-                <div class="blog-content">
-                  <a href="#" class="post-title">Burger with fries</a>
-                  <div class="post-meta">
-                    <a href="#" class="post-date">July 11, 2018</a>
-                    <a href="#" class="post-author">By Julia Stiles</a>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Single Post Area -->
-              <div class="single-post-area d-flex">
-                <!-- Blog Thumbnail -->
-                <div class="blog-thumbnail">
-                  <img src="assets/bg-img/14.jpg" alt="">
-                </div>
-                <!-- Blog Content -->
-                <div class="blog-content">
-                  <a href="#" class="post-title">Avocado &amp; Oisters</a>
-                  <div class="post-meta">
-                    <a href="#" class="post-date">July 11, 2018</a>
-                    <a href="#" class="post-author">By Julia Stiles</a>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Single Post Area -->
-              <div class="single-post-area d-flex">
-                <!-- Blog Thumbnail -->
-                <div class="blog-thumbnail">
-                  <img src="assets/bg-img/15.jpg" alt="">
-                </div>
-                <!-- Blog Content -->
-                <div class="blog-content">
-                  <a href="#" class="post-title">Tortilla prawns</a>
-                  <div class="post-meta">
-                    <a href="#" class="post-date">July 11, 2018</a>
-                    <a href="#" class="post-author">By Julia Stiles</a>
-                  </div>
-                </div>
-              </div>
-  
-              <!-- Single Post Area -->
-              <div class="single-post-area d-flex">
-                <!-- Blog Thumbnail -->
-                <div class="blog-thumbnail">
-                  <img src="assets/bg-img/16.jpg" alt="">
-                </div>
-                <!-- Blog Content -->
-                <div class="blog-content">
-                  <a href="#" class="post-title">Burger with fries</a>
-                  <div class="post-meta">
-                    <a href="#" class="post-date">July 11, 2018</a>
-                    <a href="#" class="post-author">By Julia Stiles</a>
-                  </div>
-                </div>
-              </div>  
+              <% end %>
             </div>
           </div>
         </div>
@@ -140,77 +67,3 @@
   </div>
 </div>
 <!-- ##### Posts Area End ##### -->
-
-<!-- ##### Instagram Area Start ##### -->
-<div class="instagram-feed-area d-flex flex-wrap">
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta1.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta1.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta2.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta2.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta3.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta3.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta4.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta4.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta5.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta5.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta6.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta6.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta7.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta7.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta8.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta8.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta9.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta9.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-
-  <!-- Single Instagram -->
-  <div class="single-instagram">
-    <img src="assets/bg-img/insta10.jpg" alt="">
-    <!-- Image Zoom -->
-    <a href="assets/bg-img/insta10.jpg" class="img-zoom" title="Instagram Image">+</a>
-  </div>
-</div>
-<!-- ##### Instagram Area End ##### -->
