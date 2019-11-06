@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user/resource'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -16,4 +17,10 @@ Rails.application.routes.draw do
   get 'password/reset', action: :reset_new_password, controller: 'passwords'
 
   post 'comments/reply', action: :create_reply, controller: 'comments'
+
+  get 'profile', action: :profile, controller: 'users'
+  post 'profile/update', action: :update_profile, controller: 'users'
+  get 'profile/change-password', action: :change_password, controller: 'users'
+  post 'profile/update-password', action: :update_password, controller: 'users'
+
 end
