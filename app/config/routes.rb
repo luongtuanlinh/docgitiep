@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   get 'user/resource'
-=======
   get 'admins/index'
->>>>>>> c777b89b538af5c1134409710a9d313ab8a1dcf5
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

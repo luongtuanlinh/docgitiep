@@ -89,6 +89,7 @@
                   <!-- Login/Register -->
                   <div class="login-area">
                     <% if user_signed_in? %>
+                      <%= link_to("Profile","/profile") %> 
                       <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
                     <% else %>
                       <%= link_to("Login / Register","/users/sign_in") %> 
