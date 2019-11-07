@@ -115,7 +115,7 @@
                     <% if reply.user_id == current_user.id %>
                     <a href="#" class="post-date" onclick=<%= formShow%>>Reply</a>
                     <a
-                      href="#"><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "reply" %></a>
+                      href="#"><%= link_to 'Delete', destroy_reply_path(reply), method: :delete, data: { confirm: 'Are you sure?' }, class: "reply" %></a>
                     <% else %>
                     <a href="#" class="reply" onclick=<%= formShow%>>Reply</a>
                     <% end %>

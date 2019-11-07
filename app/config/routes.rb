@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'profile/change-password', action: :change_password, controller: 'users'
   post 'profile/update-password', action: :update_password, controller: 'users'
 
+  delete 'destroy-reply/:id', action: :destroy_reply, controller: 'comments', as: 'destroy-reply'
   
 #   Templates
 #   get 'single', action: :single, controller: 'homepage'

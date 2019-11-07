@@ -33,6 +33,13 @@ class CommentsController < ApplicationController
         @reply.save
         redirect_to recipe_path(@reply.comment.recipe_id)
     end
+
+
+    def destroy_reply
+        @reply = Reply.find(params[:id])
+        @reply.destroy
+        redirect_to recipe_path(@reply.comment.recipe_id)
+    end
 private
     def comment_params
         params.require(:comment).permit(:user_id, :recipe_id, :content)
