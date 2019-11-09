@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   post 'profile/update-password', action: :update_password, controller: 'users'
 
   delete 'destroy-reply/:id', action: :destroy_reply, controller: 'comments', as: 'destroy-reply'
+
+  put 'comments/:id/update-reply', action: :update_reply, controller: 'comments'
+
   
 #   Templates
 #   get 'single', action: :single, controller: 'homepage'
