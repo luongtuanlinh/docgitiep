@@ -1,7 +1,6 @@
 class PremiumController < ApplicationController
-  before_action :authenticate_user!,
-                :check_premium,
-                except: 'info'
+  before_action :check_premium, except: ['info', 'thank_you']
+  before_action :authenticate_user!, except: 'info'
 
   def get_purchase
     render 'premium/purchase'
