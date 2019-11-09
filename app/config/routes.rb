@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   get 'premium/thankyou', to: 'premium#thank_you'
   
   # Admin
-  get 'admin', action: :index, controller: 'admins'
   
 #   Templates
 #   get 'admins/index'
