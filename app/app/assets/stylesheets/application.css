@@ -18,5 +18,7 @@
  *= require nice-select
  *= require owl.carousel.min
  *= require style
+ *= require recipes
+ *= require premium
  *= require_self
  */
