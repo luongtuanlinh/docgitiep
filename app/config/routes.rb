@@ -20,7 +20,6 @@ Rails.application.routes.draw do
   resources :comments
   post 'comments/reply', action: :create_reply, controller: 'comments'
 
-<<<<<<< HEAD
   get 'profile', action: :profile, controller: 'users'
   post 'profile/update', action: :update_profile, controller: 'users'
   get 'profile/change-password', action: :change_password, controller: 'users'
@@ -32,7 +31,6 @@ Rails.application.routes.draw do
 
   
 #   Templates
-=======
   # premium
   get 'premium/info', to: 'premium#info', as: 'premium_info'
   get 'premium/purchase', action: :get_purchase, controller: 'premium', as: 'get_purchase_premium'
@@ -43,7 +41,6 @@ Rails.application.routes.draw do
   
 #   Templates
 #   get 'admins/index'
->>>>>>> 0bff0e0ac6f9071c6f3598913a78b3f77111fdda
 #   get 'single', action: :single, controller: 'homepage'
 #   get 'category-post', action: :category_post, controller: 'homepage'
 #   get 'category', action: :category, controller: 'homepage'
