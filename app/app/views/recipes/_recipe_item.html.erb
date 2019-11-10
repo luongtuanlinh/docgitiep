@@ -1,0 +1,18 @@
+<div class="recipe-item col-12 col-sm-4 col-md-3">
+  <a href="<%= recipe.is_premium? && !current_user&.is_premium? ? premium_info_path : recipe_path(recipe) %>" class="recipe-name">
+    <div class="recipe-image full-width p-relative">
+      <img src="<%= recipe.image %>" alt="">
+      <% if recipe.is_premium? %>
+        <div class="premium-label">
+          <p>Premium</p>
+        </div>
+      <% end %>
+    </div>
+  </a>
+  <div class="blog-content">
+    <a href="#" class="category-name disabled">
+      <%= recipe.category.name %>
+    </a>
+    <a href="<%= recipe.is_premium? && !current_user&.is_premium? ? premium_info_path : recipe_path(recipe) %>" class="recipe-name"><%= recipe.name %></a>
+  </div>
+</div>
