@@ -17,6 +17,9 @@
  *= require magnific-popup
  *= require nice-select
  *= require owl.carousel.min
+ *= require scaffolds
  *= require style
+ *= require recipes
+ *= require premium
  *= require_self
  */

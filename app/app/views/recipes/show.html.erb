@@ -12,7 +12,7 @@
             <a href="#" class="post-tag"><%= @recipe.category.name %></a>
             <h4 class="post-title"><%= @recipe.name %></h4>
             <div class="post-meta mb-50">
-              <a href="#" class="post-date"><%= @recipe.created_at %></a>
+              <a href="#" class="post-date disabled"><%= I18n.l(@recipe.created_at) %></a>
             </div>
             <p>
               <%= @recipe.recipe %>
@@ -26,8 +26,8 @@
         <div class="recipe-info">
           <h5>Info</h5>
           <ul class="info-data">
-            <li><img src="/assets/core-img/alarm-clock.png" alt=""> <span><%= @recipe.time_to_cook %></span></li>
-            <li><img src="/assets/core-img/sandwich.png" alt=""> <span><%= @recipe.energy %></span></li>
+            <li><img src="/assets/core-img/alarm-clock.png" alt=""> <span><%= @recipe.time_to_cook %> h</span></li>
+            <li><img src="/assets/core-img/sandwich.png" alt=""> <span><%= @recipe.energy %> cal</span></li>
           </ul>
         </div>
 

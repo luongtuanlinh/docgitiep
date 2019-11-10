@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_11_06_074924) do
+=======
+ActiveRecord::Schema.define(version: 2019_11_09_014656) do
+>>>>>>> 0bff0e0ac6f9071c6f3598913a78b3f77111fdda
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -32,6 +36,13 @@ ActiveRecord::Schema.define(version: 2019_11_06_074924) do
     t.string "name"
     t.integer "amount"
     t.string "unit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "premium_purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "expries_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
