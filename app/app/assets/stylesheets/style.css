@@ -1665,6 +1665,15 @@ h3 {
 
 /* ====== The End ====== */
 
+.full-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.p-relative {
+  position: relative;
+}
+
 .pagination {
   margin: 30px 0;
 }
@@ -1680,11 +1689,6 @@ h3 {
   border-radius: 5px;
 }
 
-.full-width {
-  width: 100%;
-  max-width: 100%;
-}
-
 .category-name,
 .recipe-name {
   margin-top: 10px;
@@ -1694,10 +1698,6 @@ h3 {
 .category-name,
 .category-name:hover {
   color: #b0c364;
-}
-
-.recipe-name:hover {
-  color: white;
 }
 
 .custom-h3 {

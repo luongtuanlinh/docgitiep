@@ -1,15 +1,5 @@
 <div class="row">
   <% recipes.each do |recipe| %>
-  <div class="col-12 col-sm-4 col-md-3">
-    <div class="full-width">
-      <img src="<%= recipe.image %>" alt="">
-    </div>
-    <div class="blog-content">
-      <a href="#" class="category-name">
-        <%= recipe.category.name %>
-      </a>
-      <a href="<%= recipe_path(recipe) %>" class="recipe-name"><%= recipe.name %></a>
-    </div>
-  </div>
+    <%= render 'recipe_item', recipe: recipe %>
   <%end %>
 </div>
