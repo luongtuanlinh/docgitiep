@@ -5,7 +5,9 @@
   <title>Recipe</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <!-- jQuery-2.2.4 js -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <%= yield :head %>
 </head>
 
@@ -89,9 +91,9 @@
                   <!-- Login/Register -->
                   <div class="login-area">
                     <% if user_signed_in? %>
-                      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>   
+                      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
                     <% else %>
-                      <%= link_to("Login / Register","/users/sign_in") %> 
+                      <%= link_to("Login / Register","/users/sign_in") %>
                     <% end %>
                   </div>
                 </div>

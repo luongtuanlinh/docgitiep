@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   # Authentication
   devise_for :users
+
+  get 'admin', action: :index, controller: 'admins'
+
   post 'password/forgot', action: :forgot, controller: 'passwords'
   post 'password/reset', action: :reset, controller: 'passwords'
   get 'password/reset', action: :reset_new_password, controller: 'passwords'
@@ -23,9 +26,12 @@ Rails.application.routes.draw do
   get 'premium/purchase', action: :get_purchase, controller: 'premium', as: 'get_purchase_premium'
   post 'premium/purchase', action: :post_purchase, controller: 'premium', as: 'post_purchase_premium'
   get 'premium/thankyou', to: 'premium#thank_you'
-  
+
+  # bookmark
+  resources :bookmarks, only: [:create, :destroy]
+
   # Admin
-  
+
 #   Templates
 #   get 'admins/index'
 #   get 'single', action: :single, controller: 'homepage'
@@ -33,4 +39,5 @@ Rails.application.routes.draw do
 #   get 'category', action: :category, controller: 'homepage'
 #   get 'contact', action: :contact, controller: 'homepage'
 #   get 'recipe', action: :recipe, controller: 'homepage'
+
 end
