@@ -65,11 +65,12 @@
             <!-- Comment Meta -->
             <div class="comment-meta">
               <div class="d-flex">
-                <a href="#" class="post-author"><%= comment.user.email %></a>
-                <a href="#" class="post-date"><%= comment.created_at.strftime("%d %b, %Y %H:%M") %></a>
+                <a href="#" class="post-author"><%= comment.user.username %></a>
+                <a href="#" class="post-date"><%= I18n.l(comment.created_at) %></a>
                 <% if user_signed_in? %>
                 <% if comment.user_id == current_user.id %>
                 <a href="#" class="post-date" onclick=<%= formCmtShow%>>Reply</a>
+                <a href="#" class="post-date" onclick="$('#comment<%= comment.id%>').show()">Edit</a>
                 <a
                   href="#"><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "reply" %></a>
                 <% else %>
@@ -78,7 +79,22 @@
                 <% end %>
               </div>
               <p><%= comment.content %></p>
-              <div id=<%= replyCmtForm%> style="display: none;">
+              <div id="comment<%= comment.id%>" style="display:none;" class="form-group">
+                <%= form_for(@comment, :url => url_for(:controller => 'comments', :action => 'update'), method: "put") do |f| %>
+                <%= f.hidden_field :id, value: comment.id%>
+                <input type="text" name="comment[content]" class="form-control" value=<%= comment.content%>>
+                <div class="row">
+                  <div class="col-6">
+                    <button class="btn mt-30 pull-right" type="submit" style="background-color:#b0c364;color:#fff;">Update
+                      Comment</button>
+                  </div>
+                  <div class="col-6">
+                    <button class="btn btn-default mt-30" type="button" onclick="$('#comment<%= comment.id%>').hide()">Cancel</button>
+                  </div>
+                </div>
+                <% end %>
+              </div>
+              <div id=<%= replyCmtForm%> style="display: none;" class="form-group">
                 <%= form_for(@comment.replies.build, :url => url_for(:controller => 'comments', :action => 'create_reply'), method: "post") do |f| %>
                 <%= f.hidden_field :comment_id, value: comment.id%>
                 <% if user_signed_in? %>
@@ -109,19 +125,36 @@
                 <!-- Comment Meta -->
                 <div class="comment-meta">
                   <div class="d-flex">
-                    <a href="#" class="post-author"><%= reply.user.email%></a>
+                    <a href="#" class="post-author"><%= reply.user.username%></a>
                     <a href="#" class="post-date"><%= reply.created_at.strftime("%d %b, %Y %H:%M")%></a>
                     <% if user_signed_in? %>
                     <% if reply.user_id == current_user.id %>
                     <a href="#" class="post-date" onclick=<%= formShow%>>Reply</a>
+                    <a href="#" class="post-date" onclick="$('#reply<%= reply.id%>').show()">Edit</a>
+
                     <a
-                      href="#"><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "reply" %></a>
+                      href="#"><%= link_to 'Delete', destroy_reply_path(reply), method: :delete, data: { confirm: 'Are you sure?' }, class: "reply" %></a>
                     <% else %>
-                    <a href="#" class="reply" onclick=<%= formShow%>>Reply</a>
+                    <a href="#" class="reply" onclick=<%=formShow%>>Reply</a>
                     <% end %>
                     <% end %>
                   </div>
                   <p><%= reply.content%></p>
+                  <div id="reply<%= reply.id%>" style="display:none;" class="form-group">
+                    <%= form_for(@comment.replies.build, :url => url_for(:controller => 'comments', :action => 'update_reply'), method: "put") do |f| %>
+                    <%= f.hidden_field :id, value: reply.id%>
+                    <input type="text" name="reply[content]" class="form-control" value=<%= reply.content%>>
+                    <div class="row">
+                      <div class="col-6">
+                        <button class="btn mt-30 pull-right" type="submit" style="background-color:#b0c364;color:#fff;">Update
+                          Comment</button>
+                      </div>
+                      <div class="col-6">
+                        <button class="btn btn-default mt-30" type="button" onclick="$('#reply<%= reply.id%>').hide()">Cancel</button>
+                      </div>
+                    </div>
+                    <% end %>
+                  </div>
                   <div id=<%= replyForm%> style="display: none;">
                     <%= form_for(@comment.replies.build, :url => url_for(:controller => 'comments', :action => 'create_reply'), method: "post") do |f| %>
                     <%= f.hidden_field :comment_id, value: comment.id%>
