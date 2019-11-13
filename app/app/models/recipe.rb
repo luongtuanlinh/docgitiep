@@ -4,7 +4,9 @@ class Recipe < ApplicationRecord
 
     belongs_to :category
     has_many :ingredients
-    has_many :comments, dependent: :destroy
-    
+
+    has_many :comments
+    has_many :bookmarks, dependent: :destroy
+
     paginates_per 6
 end
