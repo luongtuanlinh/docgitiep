@@ -6,7 +6,7 @@
       <div class="col-12 col-lg-8 col-xl-7">
         <div class="post-details-content mb-100">
           <div class="blog-thumbnail mb-50">
-            <img src="<%= '/' + @recipe.image %>" alt="">
+            <img src="<%= @recipe.image.url %>" alt="">
           </div>
           <div class="blog-content">
             <a href="#" class="post-tag"><%= @recipe.category.name %></a>
@@ -60,7 +60,7 @@
           <div class="comment-content d-flex">
             <!-- Comment Author -->
             <div class="comment-author">
-              <img src="/assets/bg-img/32.jpg" alt="author">
+              <img src="<%= comment.user.avatar %>" alt="author">
             </div>
             <!-- Comment Meta -->
             <div class="comment-meta">
@@ -120,7 +120,7 @@
               <div class="comment-content d-flex">
                 <!-- Comment Author -->
                 <div class="comment-author">
-                  <img src="/assets/bg-img/33.jpg" alt="author">
+                  <img src="<%= reply.user.avatar %>" alt="author">
                 </div>
                 <!-- Comment Meta -->
                 <div class="comment-meta">

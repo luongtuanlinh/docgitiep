@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+    mount_uploader :image, RecipeImageUploader
+
     scope :premium, -> { where(is_premium: true) }
     scope :common, -> { where(is_premium: false) }
 

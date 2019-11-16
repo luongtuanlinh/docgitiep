@@ -57,7 +57,6 @@ categories.each do |category|
       time_to_cook: 1.5,
       energy: 2000,
       recipe: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis arcu tempus, egestas tincidunt augue pellentesque. Suspendisse vestibulum sem in eros maximus, pretium commodo turpis convallis. Aenean scelerisque orci quis urna tempus, vitae interdum velit aliquet.',
-      image: 'assets/bg-img/8.jpg',
       is_premium: true,
       category: category
     },
@@ -66,7 +65,6 @@ categories.each do |category|
       time_to_cook: 1.5,
       energy: 2000,
       recipe: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis arcu tempus, egestas tincidunt augue pellentesque. Suspendisse vestibulum sem in eros maximus, pretium commodo turpis convallis. Aenean scelerisque orci quis urna tempus, vitae interdum velit aliquet.',
-      image: 'assets/bg-img/7.jpg',
       is_premium: true,
       category: category
     },
@@ -75,7 +73,6 @@ categories.each do |category|
       time_to_cook: 1.5,
       energy: 2000,
       recipe: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis arcu tempus, egestas tincidunt augue pellentesque. Suspendisse vestibulum sem in eros maximus, pretium commodo turpis convallis. Aenean scelerisque orci quis urna tempus, vitae interdum velit aliquet.',
-      image: 'assets/bg-img/10.jpg',
       is_premium: false,
       category: category
     },
@@ -84,7 +81,6 @@ categories.each do |category|
       time_to_cook: 1.5,
       energy: 2000,
       recipe: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis arcu tempus, egestas tincidunt augue pellentesque. Suspendisse vestibulum sem in eros maximus, pretium commodo turpis convallis. Aenean scelerisque orci quis urna tempus, vitae interdum velit aliquet.',
-      image: 'assets/bg-img/9.jpg',
       is_premium: false,
       category: category
     }
