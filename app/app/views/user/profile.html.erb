@@ -69,7 +69,7 @@
             <%= form_for(@user, :url => url_for(:controller => 'users', :action => 'update_profile'), method: "post") do |f| %>
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <img src="assets/avatar/default-avatar.jpg"
+                    <img src="<%= current_user.avatar ? current_user.avatar.url : 'assets/avatar/default-avatar.jpg' %>"
                     alt="author">
                     <%= f.file_field :avatar%>
                 </div>
