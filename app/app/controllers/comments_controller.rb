@@ -20,6 +20,9 @@ class CommentsController < ApplicationController
     end
     
     def update
+        @comment = Comment.find_by params.require(:comment).permit(:id)
+        @comment.update(params.require(:comment).permit(:content))
+        redirect_to recipe_path(@comment.recipe_id)
     end
     
     def destroy
@@ -31,6 +34,18 @@ class CommentsController < ApplicationController
     def create_reply
         @reply= Reply.new(reply_params)
         @reply.save
+        redirect_to recipe_path(@reply.comment.recipe_id)
+    end
+
+    def update_reply
+        @reply = Reply.find_by params.require(:reply).permit(:id)
+        @reply.update(params.require(:reply).permit(:content))
+        redirect_to recipe_path(@reply.comment.recipe_id)
+    end
+
+    def destroy_reply
+        @reply = Reply.find(params[:id])
+        @reply.destroy
         redirect_to recipe_path(@reply.comment.recipe_id)
     end
 private
