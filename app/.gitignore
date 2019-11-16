@@ -33,3 +33,6 @@
 
 # Ignore plugins
 vendor/bundle/
+
+# Ignore files
+public/uploads/
