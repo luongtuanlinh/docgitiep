@@ -18,6 +18,7 @@
 //= require cable
 //= require rails-ujs
 //= require bookmarks
+//= require rating
 //= require activestorage
 // require turbolinks
 //= require_self

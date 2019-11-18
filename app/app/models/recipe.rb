@@ -9,6 +9,11 @@ class Recipe < ApplicationRecord
 
     has_many :comments, dependent: :destroy
     has_many :bookmarks, dependent: :destroy
+    has_many :ratings, dependent: :destroy
 
     paginates_per 6
+
+    def get_average_rating
+        return self.ratings.average(:rate)
+    end
 end

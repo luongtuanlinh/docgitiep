@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Authentication
-  devise_for :users, path: 'users', controllers: { 
+  devise_for :users, path: 'users', controllers: {
     sessions: 'users/sessions',
     confirmations: 'users/confirmations',
     passwords: 'users/passwords',
@@ -33,6 +33,9 @@ Rails.application.routes.draw do
 
   put 'comments/:id/update-reply', action: :update_reply, controller: 'comments'
 
+
+
+  #Templates
   # premium
   get 'premium/info', to: 'premium#info', as: 'premium_info'
   get 'premium/purchase', action: :get_purchase, controller: 'premium', as: 'get_purchase_premium'
@@ -42,8 +45,11 @@ Rails.application.routes.draw do
   # bookmark
   resources :bookmarks, only: [:create, :destroy]
 
+  # rating
+  resources :ratings, only: [:create, :destroy]
+
   # Admin
-  devise_for :admins, path: 'admins', controllers: { 
+  devise_for :admins, path: 'admins', controllers: {
     sessions: 'admins/sessions'
   }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
