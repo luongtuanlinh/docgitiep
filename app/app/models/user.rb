@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :replies
   has_many :bookmarks, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   has_many :premium_purchases
 
