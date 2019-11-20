@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def update_profile
       @user = User.find(current_user.id)
-      if @user.update(user_profile_params)
+      if @user.update_with_password(user_profile_params)
         flash[:notices] = ["Your profile was successfully updated"]
         redirect_to profile_path
       else
@@ -25,6 +25,6 @@ class UsersController < ApplicationController
 
   private
   def user_profile_params
-    params.require(:user).permit(:username, :email, :avatar)
+    params.require(:user).permit(:username, :email, :avatar, :current_password, :password)
   end
 end

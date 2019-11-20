@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
-
+  cattr_reader :current_password
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,5 +15,17 @@ class User < ApplicationRecord
 
   def is_premium?
     premium_purchases.active.exists?
+  end
+
+  def update_with_password(user_profile_params)
+    current_password = user_profile_params.delete(:current_password)
+
+    if self.valid_password?(current_password)
+      self.update(user_profile_params)
+      true
+    else
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
+      false
+    end
   end
 end
