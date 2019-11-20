@@ -51,20 +51,22 @@
 
     <div class="row">
       <div class="col-sm-12">
+        <% if user_signed_in? %>
         <h4>Rate this recipe</h4>
         <div id="rate-score" data-rate="<%= current_user.ratings.where(recipe_id: @recipe.id).first&.rate %>"></div>
         <div class="rate">
-        <input class="star-rating" type="radio" id="star5" name="rate" value="5" />
-        <label for="star5" title="text">5 stars</label>
-        <input class="star-rating" type="radio" id="star4" name="rate" value="4" />
-        <label for="star4" title="text">4 stars</label>
-        <input class="star-rating" type="radio" id="star3" name="rate" value="3" />
-        <label for="star3" title="text">3 stars</label>
-        <input class="star-rating" type="radio" id="star2" name="rate" value="2" />
-        <label for="star2" title="text">2 stars</label>
-        <input class="star-rating" type="radio" id="star1" name="rate" value="1" />
-        <label for="star1" title="text">1 star</label>
-      </div>
+          <input class="star-rating" type="radio" id="star5" name="rate" value="5" />
+          <label for="star5" title="text">5 stars</label>
+          <input class="star-rating" type="radio" id="star4" name="rate" value="4" />
+          <label for="star4" title="text">4 stars</label>
+          <input class="star-rating" type="radio" id="star3" name="rate" value="3" />
+          <label for="star3" title="text">3 stars</label>
+          <input class="star-rating" type="radio" id="star2" name="rate" value="2" />
+          <label for="star2" title="text">2 stars</label>
+          <input class="star-rating" type="radio" id="star1" name="rate" value="1" />
+          <label for="star1" title="text">1 star</label>
+        </div>
+        <% end %>
       </div>
     </div>
     <br>
