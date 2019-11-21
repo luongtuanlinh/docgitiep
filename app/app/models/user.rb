@@ -27,7 +27,7 @@ class User < ApplicationRecord
     elsif self.valid_password?(current_password)
       self.update(user_profile_params)
       true
-    elsif
+    else
       self.errors.add(:current_password, current_password.blank? ? :blank : :invalid)
       false
     end
