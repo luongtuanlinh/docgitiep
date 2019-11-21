@@ -19,8 +19,12 @@ class User < ApplicationRecord
 
   def update_with_password(user_profile_params)
     current_password = user_profile_params.delete(:current_password)
-
-    if self.valid_password?(current_password)
+    if current_password == ''
+      user_profile_params.delete(:password)
+      self.update(user_profile_params)
+      true
+    
+    elsif self.valid_password?(current_password)
       self.update(user_profile_params)
       true
     else

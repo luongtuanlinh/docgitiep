@@ -13,7 +13,7 @@ class UsersController < ApplicationController
         redirect_to profile_path
       else
         flash[:notices] = ["Your profile could not be updated"]
-        render profile_path
+        redirect_to profile_path
       end
   end
 
