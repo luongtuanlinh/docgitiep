@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Admins::SessionsController < Devise::SessionsController
+  include Accessible
+  skip_before_action :check_user, only: :destroy
+  
   layout 'admin'
   # before_action :configure_sign_in_params, only: [:create]
 
