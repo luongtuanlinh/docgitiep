@@ -8,6 +8,7 @@ $(function() {
   $('.star-rating').on('click', function() {
     rate = $(this).val();
     $.post('/ratings', { id: recipe_id, rate: rate }, function() {
+      location.reload();
       console.log("Rated");
     });
   })
