@@ -30,8 +30,12 @@ RailsAdmin.config do |config|
     export
     bulk_delete
     show
-    edit
-    delete
+    edit do
+      except ['Comment', 'Reply']
+    end
+    delete do
+      except ['Comment', 'Reply']
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
