@@ -6,6 +6,7 @@ $(function() {
       $(this).removeClass('far');
       $.post('/bookmarks', { id: recipe_id }, function(data) {
         that.addClass('fas');
+        location.reload();
         console.log("Added bookmark");
       });
     } else if ($(this).hasClass('fas')) {
@@ -15,6 +16,7 @@ $(function() {
         type: 'DELETE',
         success: function(result) {
           that.addClass('far');
+          location.reload();
           console.log("Deleted bookmark");
         }
       });

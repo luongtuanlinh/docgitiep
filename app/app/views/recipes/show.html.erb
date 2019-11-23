@@ -1,13 +1,16 @@
 <!-- ##### Post Details Area Start ##### -->
-<section class="post-news-area section-padding-100-0 mb-70">
+<section class="recipe-detail post-news-area section-padding-100-0 mb-70">
   <div id="recipe-id" data-recipe_id="<%= @recipe.id %>"></div>
   <div class="container">
     <div class="row justify-content-center">
       <!-- Post Details Content Area -->
       <div class="col-12 col-lg-8 col-xl-7">
         <div class="post-details-content mb-100">
-          <div class="blog-thumbnail mb-50">
+          <div class="blog-thumbnail mb-50 recipe-image full-width p-relative">
             <img src="<%= @recipe.image.url %>" alt="">
+            <% if user_signed_in? %>
+              <i class="recipe-bookmark text-danger recipe-name <%= current_user.bookmarks.where(recipe_id: @recipe.id).first.nil? ? " far " : "fas " %> fa-heart fa-2x" data-recipe_id="<%= @recipe.id %>" style="cursor: pointer"></i>
+            <% end %>
           </div>
           <div class="blog-content">
             <a href="#" class="post-tag"><%= @recipe.category.name %></a>
@@ -28,6 +31,7 @@
         <div class="recipe-info">
           <h5>Info</h5>
           <ul class="info-data">
+            <li><i class="recipe-name far fa-heart fa-2x"></i><span> <%= @recipe.bookmarks.count %></span></li>
             <li><img src="/assets/core-img/alarm-clock.png" alt=""> <span><%= @recipe.time_to_cook %> h</span></li>
             <li><img src="/assets/core-img/sandwich.png" alt=""> <span><%= @recipe.energy %> cal</span></li>
           </ul>
