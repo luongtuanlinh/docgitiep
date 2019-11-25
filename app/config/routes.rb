@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post 'profile/update', action: :update_profile, controller: 'users'
   get 'profile/change-password', action: :change_password, controller: 'users'
   post 'profile/update-password', action: :update_password, controller: 'users'
+  get 'profile/bookmarked-recipes', action: :show_bookmarked_recipes, controller: 'users'
 
   delete 'destroy-reply/:id', action: :destroy_reply, controller: 'comments', as: 'destroy-reply'
 

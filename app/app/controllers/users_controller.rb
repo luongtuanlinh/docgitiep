@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  
+
   def profile
     @user = current_user
     render "user/profile"
@@ -21,6 +21,14 @@ class UsersController < ApplicationController
   end
 
   def update_password
+  end
+
+  def show_bookmarked_recipes
+    @user = User.find(current_user.id)
+    @bookmarks = @user.bookmarks
+    @recipes = [];
+    @bookmarks.each { |bookmark| @recipes << bookmark.recipe }
+    render 'recipes/bookmarked_recipes'
   end
 
   private
