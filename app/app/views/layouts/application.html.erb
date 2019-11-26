@@ -73,9 +73,11 @@
                 </div>
 
                 <div class="classynav col-lg-1">
-                  <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list' style='margin-left: 100px; z-index: 100'>
-                    <i class='far fa-heart fa-2x' ></i>
-                  </a>
+                  <% if user_signed_in? %>
+                    <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list' style='margin-left: 100px; z-index: 100'>
+                      <i class='far fa-heart fa-2x' ></i>
+                    </a>
+                  <% end %>
                 </div>
 
                 <!-- Nav Start -->
