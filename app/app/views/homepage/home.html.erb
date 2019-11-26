@@ -43,7 +43,7 @@
                 </div>
                 </div>
                 <div class="text-center">
-                    <p style="color:black;"><%= recipe.recipe %></p>
+                    <p style="color:black;"><%= recipe.recipe[0..249] + '...' %></p>
                 </div>
             </div>
       <% end %>
