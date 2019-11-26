@@ -65,7 +65,7 @@ private
   # check premium item
   def set_recipe
     @recipe = Recipe.find(params[:id])
-    if(@recipe.is_premium && !current_user&.is_premium)
+    if(@recipe.is_premium? && !current_user&.is_premium?)
       return redirect_to premium_info_path
     end
   end
