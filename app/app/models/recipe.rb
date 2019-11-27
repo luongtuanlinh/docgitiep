@@ -16,4 +16,8 @@ class Recipe < ApplicationRecord
     def get_average_rating
         return self.ratings.average(:rate)
     end
+    
+    def get_rate_times
+        return self.ratings.count(:user_id)
+    end
 end

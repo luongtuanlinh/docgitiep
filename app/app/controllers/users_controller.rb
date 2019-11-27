@@ -9,10 +9,10 @@ class UsersController < ApplicationController
   def update_profile
       @user = User.find(current_user.id)
       if @user.update_with_password(user_profile_params)
-        flash[:notices] = ["Your profile was successfully updated"]
+        flash[:notice] = "Your profile was successfully updated"
         redirect_to profile_path
       else
-        flash[:notices] = ["Your profile could not be updated"]
+        flash[:error] = @user.errors
         redirect_to profile_path
       end
   end
