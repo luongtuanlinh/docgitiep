@@ -4,11 +4,7 @@
       <img src="<%= recipe.image %>" alt="">
       <% if recipe.is_premium? %>
         <div class="premium-label">
-          <p>Premium <span style="padding-left: 10px"><%= recipe.get_average_rating ? recipe.get_average_rating : "0.0" %></span><i class="fas fa-star"></i><span>(<%= recipe.get_rate_times ? recipe.get_rate_times : "0" %> lượt đánh giá)</span></p>
-        </div>
-      <% else %>
-        <div class="premium-label">
-          <p><span style="padding-left: 70px"><%= recipe.get_average_rating ? recipe.get_average_rating : "0.0" %></span><i class="fas fa-star"></i><span>(<%= recipe.get_rate_times ? recipe.get_rate_times : "0" %> lượt đánh giá)</span></p>
+          <p>Premium</p>
         </div>
       <% end %>
     </div>
@@ -19,6 +15,11 @@
       </a>
     <div class="row">
       <div class="col-md-9">
+        <p>
+          <span><%= recipe.get_average_rating ? recipe.get_average_rating : "0.0" %></span>
+          <i class="fas fa-star"></i>
+          <span>(<%= recipe.get_rate_times ? recipe.get_rate_times : "0" %> rating)</span>
+        </p>
         <a href="<%= recipe.is_premium? && !current_user&.is_premium? ? premium_info_path : recipe_path(recipe) %>" class="recipe-name"><%= recipe.name %></a>
       </div>
       <% if user_signed_in? %>
