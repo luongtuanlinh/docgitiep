@@ -72,13 +72,16 @@
                   </form>
                 </div>
 
-                <% if(current_user) %>
                 <div class="classynav col-lg-1">
-                  <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list' style='margin-left: 100px; z-index: 100'>
-                    <i class='far fa-heart fa-2x' ></i>
-                  </a>
+                  <% if user_signed_in? %>
+                    <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list' style='margin-left: 100px; z-index: 100; color: red'>
+                      <span style="position: relative">
+                        <i style="display:inline" class='fas fa-heart fa-2x' ></i>
+                        <span style="position: absolute; right: -20px; top: -12px">(<%= current_user.bookmarks.count %>)</span> 
+                      </span>
+                    </a>
+                  <% end %>
                 </div>
-                <% end %>
 
                 <!-- Nav Start -->
                 <div class="classynav col-lg-2">
