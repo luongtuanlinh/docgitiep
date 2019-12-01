@@ -25,21 +25,22 @@ module StoreLocationBackport
 end
 
 class ApplicationController < ActionController::Base
-    before_action :configure_permitted_parameters, if: :devise_controller?
-    include StoreLocationBackport
-    before_action :store_user_location!, if: :storable_location?
+  rescue_from Exception, :with => :render_404
 
-    protected
-    def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:username])
-    end
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  include StoreLocationBackport
+  before_action :store_user_location!, if: :storable_location?
 
-    def after_sign_in_path_for(resource_or_scope)
-      stored_location_for(resource_or_scope) || super
-    end
-  # rescue_from Exception, :with => :render_404
+  protected
+  def configure_permitted_parameters
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
+  devise_parameter_sanitizer.permit(:account_update, keys: [:username])
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    stored_location_for(resource_or_scope) || super
+  end
 
 private
 
