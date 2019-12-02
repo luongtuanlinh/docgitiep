@@ -8,7 +8,11 @@
         <h3 class="custom-h3 mb-30 text-left">
           Bookmarked Items
         </h3>
-        <%= render 'recipes/recipe_list', recipes: @recipes %>
+        <% if @recipes.count > 0 %>
+          <%= render 'recipes/recipe_list', recipes: @recipes %>
+        <% else %>
+          <h2 class="text-secondary">You have not bookmarked any recipe</h2>
+        <% end %>
       </div>
 
       <!-- Sidebar Area -->
