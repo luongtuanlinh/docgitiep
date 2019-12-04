@@ -29,24 +29,7 @@
     <h3 class="custom-h3 mb-30">Recommended</h3>
     <div class="row justify-content-center">
       <!-- Single Post Catagory -->
-        <% @recipes.each do |recipe| %>
-            <!-- Single Post Catagory -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="single-post-catagory mb-30">
-                <img src="<%= recipe.image.url %>" alt="">
-                <!-- Content -->
-                <div class="catagory-content-bg">
-                    <div class="catagory-content">
-                    <a href="#" class="post-tag"><%= recipe.category.name %></a>
-                    <a href="<%= recipe_path recipe %>" class="post-title"><%= recipe.name %></a>
-                    </div>
-                </div>
-                </div>
-                <div class="text-center">
-                    <p style="color:black;"><%= recipe.recipe %></p>
-                </div>
-            </div>
-      <% end %>
+      <%= render 'recipes/recipe_list', recipes: @recipes %>
     </div>
   </div>
 </div>

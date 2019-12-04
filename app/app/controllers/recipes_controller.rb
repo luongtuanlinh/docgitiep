@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_scope
+  before_action :set_recipe, only: [:show]
 
   # GET /recipes
   # GET /recipes.json
@@ -19,7 +20,6 @@ class RecipesController < ApplicationController
   # GET /recipes/1
   # GET /recipes/1.json
   def show
-    @recipe = @scope.find(params[:id])
     @comments = @recipe.comments.all.order('created_at DESC')
     @comment = @recipe.comments.build
   end
@@ -59,6 +59,14 @@ private
       return Recipe.where('name LIKE ?', "%#{search_query}%").order(is_premium: :desc, created_at: :desc)
     else
       return Recipe.order(is_premium: :desc, created_at: :desc)
+    end
+  end
+
+  # check premium item
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+    if(@recipe.is_premium? && !current_user&.is_premium?)
+      return redirect_to premium_info_path
     end
   end
 

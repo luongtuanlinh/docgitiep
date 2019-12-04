@@ -26,7 +26,7 @@
     }
 
     .login-container form {
-        padding: 10%;
+        padding: 5% 10% 10% 10%;
     }
 
     .btnSubmit {
@@ -60,6 +60,10 @@
         font-weight: 600;
         text-decoration: none;
     }
+
+    .premium-subscribed {
+        margin-bottom: 5%;
+    }
 </style>
 <div class="container login-container">
     <div class="row">
@@ -67,6 +71,26 @@
         <div class="col-md-8 login-form-1">
             <h2 class="text-center">Profile</h2>
             <%= form_for(@user, :url => url_for(:controller => 'users', :action => 'update_profile'), method: "post") do |f| %>
+              <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+              <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+            <% if current_user.is_premium? %>
+            <div class="alert alert-success premium-subscribe" role="alert">
+                Your account is <strong>PREMIUM ACCOUNT</strong>
+                <br>
+                Expires at <%= current_user.active_premium.expries_at.strftime('%Y-%m-%d') %>
+            </div>
+            <% elsif %>
+            <div class="alert alert-warning premium-subscribe" role="alert">
+                <div class="row">
+                    <div class="col-md-8">
+                        Upgrade your account to <strong>PREMIUM</strong>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="/premium/info"><button type="button" class="btn btn-warning pull-right">UPGRADE</button></a>
+                    </div>
+                </div>
+            </div>
+            <% end %>
             <div class="row">
                 <div class="col-md-6 text-center">
                     <img src="<%= current_user.avatar ? current_user.avatar.url : 'assets/avatar/default-avatar.jpg' %>" alt="avatar">
