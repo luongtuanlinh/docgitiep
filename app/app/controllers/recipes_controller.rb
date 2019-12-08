@@ -24,6 +24,10 @@ class RecipesController < ApplicationController
     @comment = @recipe.comments.build
   end
 
+  def author
+    render 'author'
+  end
+
 private
   def recipes_by_categories(categories)
     Recipe.where(category_id: categories.pluck(:id)).order(is_premium: :desc, created_at: :desc).page(page).per(4)
@@ -35,7 +39,7 @@ private
 
   def category_search
     return nil if search_type.present? && search_type != 'category'
-    
+
     if search_query.present?
       return Category.where('name LIKE ?', "%#{search_query}%")
     else
@@ -45,7 +49,7 @@ private
 
   def ingredient_search
     return nil if search_type.present? && search_type != 'ingredient'
-    
+
     if search_query.present?
       return Ingredient.where('name LIKE ?', "%#{search_query}%")
     else
