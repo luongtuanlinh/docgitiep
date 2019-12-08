@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   # recipes
   resources :recipes, only: [:index, :show]
+  get 'author', action: :author, controller: 'recipes'
 
   # comments
   resources :comments

@@ -15,7 +15,18 @@
           <div class="blog-content">
             <a href="#" class="post-tag"><%= @recipe.category.name %></a>
             <h4 class="post-title"><%= @recipe.name %></h4>
-            <div class="post-meta mb-50">
+            By
+            <% if @recipe.is_premium? %>
+              <a href="/author?type=premium">
+                Gordon Ramsay
+              </a>
+            <% else %>
+              <a href="/author">
+                Christine Hà
+              </a>
+            <% end %>
+            <br><br>
+            <div class="post-meta mb-30">
               <a href="#" class="post-date disabled"><%= I18n.l(@recipe.created_at) %></a>
             </div>
             <p>
