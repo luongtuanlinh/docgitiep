@@ -7,7 +7,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <!-- jQuery-2.2.4 js -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
   <%= yield :head %>
 </head>
 
@@ -67,19 +68,22 @@
                 <div class="col-lg-7 search-form d-flex align-items-center">
                   <form class="form full-width" action="/recipes" method="get">
                     <div class="input-group">
-                      <input class="form-control" type="search" id="topSearch" placeholder="Search for recipe, category, ingredient, ..." name="query">
+                      <input class="form-control" type="search" id="topSearch"
+                        placeholder="Search for recipe, category, ingredient, ..." name="query">
                     </div>
                   </form>
                 </div>
 
                 <div class="classynav col-lg-1">
                   <% if user_signed_in? %>
-                    <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list' style='margin-left: 100px; z-index: 100; color: red'>
-                      <span style="position: relative">
-                        <i style="display:inline" class='fas fa-heart fa-2x' ></i>
-                        <span style="position: absolute; right: -20px; top: -12px">(<%= current_user.bookmarks.count %>)</span> 
-                      </span>
-                    </a>
+                  <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list'
+                    style='margin-left: 100px; z-index: 100; color: red'>
+                    <span style="position: relative">
+                      <i style="display:inline" class='fas fa-heart fa-2x'></i>
+                      <span
+                        style="position: absolute; right: -20px; top: -12px">(<%= current_user.bookmarks.count %>)</span>
+                    </span>
+                  </a>
                   <% end %>
                 </div>
 
@@ -102,20 +106,27 @@
                   <!-- Login/Register -->
                   <div class="login-area">
                     <% if user_signed_in? %>
-                      <%= link_to(current_user.username,"/profile") %>
-                      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
 
-                    <% else %>
-                      <%= link_to("Login / Register","/users/sign_in") %>
-                    <% end %>
+                    <div class="dropdown show">
+                      <a class="btn dropdown-toggle" href="https://example.com" id="dropdownMenuLink"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img style="max-width: 40px; margin-right: 15px" src="<%= current_user.avatar %>"><%= current_user.username %></a> <div
+                          class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <%= link_to("Profile","/profile", class: "dropdown-item") %>
+                        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
+                    </div>
                   </div>
+                  <% else %>
+                  <%= link_to("Login / Register","/users/sign_in") %>
+                  <% end %>
                 </div>
-                <!-- Nav End -->
               </div>
+              <!-- Nav End -->
             </div>
-          </nav>
         </div>
+        </nav>
       </div>
+    </div>
     </div>
   </header>
 
@@ -128,7 +139,8 @@
           <!-- Copywrite Text -->
           <p class="copywrite-text">
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>
+            Copyright &copy;
+            <script>
               document.write(new Date().getFullYear());
 
             </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -165,9 +177,9 @@
   <script src="/assets/active.js"></script>
 
   <script>
-  $( function() {
-    $('[data-toggle="tooltip"]').tooltip();
-  } );
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   </script>
 </body>
 
