@@ -110,7 +110,7 @@
                     <div class="dropdown show">
                       <a class="btn dropdown-toggle" href="https://example.com" id="dropdownMenuLink"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="<%= current_user.avatar %>"><%= current_user.username %></a> <div
+                        <img style="max-width: 40px; margin-right: 15px" src="<%= current_user.avatar %>"><%= current_user.username %></a> <div
                           class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <%= link_to("Profile","/profile", class: "dropdown-item") %>
                         <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
