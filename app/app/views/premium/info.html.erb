@@ -100,7 +100,7 @@
     <a href="#top">Back to top</a>\
   </div>
   <% if !current_user&.is_premium? %>
-  <div class="full-width purchase-btn text-center">
+  <div class="full-width purchase-btn text-center" style="z-index: 10;">
     <a class="btn btn-primary" href="<%= get_purchase_premium_path %>">Purchase premium now</a>
   </div>
   <% end %>
