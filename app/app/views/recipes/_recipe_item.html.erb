@@ -1,3 +1,14 @@
+<style>
+.recipe-image {
+  height: 200px;
+  overflow: hidden;
+}
+.recipe-image img {
+  min-width:  100%;
+  min-height: 100%;
+  object-fit:cover;
+}
+</style>
 <div class="recipe-item col-12 col-sm-4 col-md-3 mb-5">
   <a href="<%= recipe.is_premium? && !current_user&.is_premium? ? premium_info_path : recipe_path(recipe) %>" class="recipe-name">
     <div class="recipe-image full-width p-relative">
