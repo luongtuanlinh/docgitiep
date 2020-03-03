@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_030444) do
+ActiveRecord::Schema.define(version: 2020_03_03_180153) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -28,6 +28,29 @@ ActiveRecord::Schema.define(version: 2019_11_16_030444) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "author_id"
+    t.string "image"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books_subjects", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "subject_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id", "subject_id"], name: "index_books_subjects_on_book_id_and_subject_id"
+    t.index ["subject_id", "book_id"], name: "index_books_subjects_on_subject_id_and_book_id"
+  end
+
+  create_table "books_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "book_id", null: false
+    t.index ["book_id", "user_id"], name: "index_books_users_on_book_id_and_user_id"
+    t.index ["user_id", "book_id"], name: "index_books_users_on_user_id_and_book_id"
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -39,15 +62,6 @@ ActiveRecord::Schema.define(version: 2019_11_16_030444) do
     t.integer "user_id"
     t.integer "recipe_id"
     t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "ingredients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "recipe_id"
-    t.string "name"
-    t.integer "amount"
-    t.string "unit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,22 +81,16 @@ ActiveRecord::Schema.define(version: 2019_11_16_030444) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "recipes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.float "time_to_cook"
-    t.integer "energy"
-    t.text "recipe"
-    t.string "image"
-    t.boolean "is_premium"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "replies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "comment_id"
     t.integer "user_id"
     t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
