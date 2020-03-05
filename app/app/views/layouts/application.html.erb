@@ -16,118 +16,76 @@
   <!-- Preloader -->
   <div class="preloader d-flex align-items-center justify-content-center">
     <div class="preloader-content">
-      <h3>Cooking in progress..</h3>
+      <h3>Loading in progress..</h3>
       <div id="cooking">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div id="area">
-          <div id="sides">
-            <div id="pan"></div>
-            <div id="handle"></div>
-          </div>
-          <div id="pancake">
-            <div id="pastry"></div>
-          </div>
-        </div>
+        <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>
     </div>
   </div>
   <!-- ##### Header Area Start ##### -->
   <header class="header-area">
-    <!-- Navbar Area -->
-    <div class="bueno-main-menu" id="sticker">
-      <div class="classy-nav-container breakpoint-off">
-        <div class="container">
-          <!-- Menu -->
-          <nav class="classy-navbar justify-content-between" id="buenoNav">
 
-            <!-- Toggler -->
-            <!-- <div id="toggler"><img src="/assets/core-img/toggler.png" alt=""></div> -->
-
-            <!-- Navbar Toggler -->
-            <div class="classy-navbar-toggler">
-              <span class="navbarToggler"><span></span><span></span><span></span></span>
+    <!-- Top Header Area -->
+    <div class="top-header-area bg-img bg-overlay" style="background-image: url(<%= asset_url('bg-img/header.jpg', type: :image) %>);">
+      <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-between">
+          <div class="col-12 col-sm-4">
+            <!-- Top Social Info -->
+            <div class="top-social-info">
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fab fa-twitter"></i></a>
+              <a href="#" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fab fa-linkedin-in"></i></a>
             </div>
+          </div>
 
-            <!-- Menu -->
-            <div class="classy-menu container-fluid">
-              <div class="row">
-                <div class="col-lg-2">
-                  <a class="logo" href="/">
-                    <img class="img-fluid" src="/assets/core-img/logo.png" alt="">
-                  </a>
-                  <!-- Close Button -->
-                  <div class="classycloseIcon">
-                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                  </div>
-                </div>
+          <a href="/" style="">
+            <img style='max-width: 100px;' src="<%= asset_url('core-img/reading-logo2.png', type: :image) %>" alt="">
+          </a>
 
-                <div class="col-lg-7 search-form d-flex align-items-center">
-                  <form class="form full-width" action="/recipes" method="get">
-                    <div class="input-group">
-                      <input class="form-control" type="search" id="topSearch"
-                        placeholder="Search for recipe, category, ingredient, ..." name="query">
+          <div class="col-12 col-sm-6 col-lg-5 col-xl-4">
+            <!-- Top Search Area -->
+            <div class="top-search-area">
+              <%# <form action="#" method="post">
+                <input type="search" name="top-search" id="topSearch" placeholder="Search">
+                <button type="submit" class="btn"><i class="fa fa-search"></i></button>
+              </form> %>
+
+              <!-- Login/Register -->
+              <div class="login-area pull-right">
+                <% if user_signed_in? %>
+                  <div class="dropdown show">
+                    <div style="color:white;" class="btn dropdown-toggle" href="https://example.com" id="dropdownMenuLink"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img style="max-width: 40px; margin-right: 10px" src="<%= current_user.avatar %>">
+                      <%= current_user.username %>
                     </div>
-                  </form>
-                </div>
+                    <div style="z-index:10;" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <%= link_to("Profile","/profile", class: "dropdown-item") %>
+                      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
+                    </div>
 
-                <div class="classynav col-lg-1">
-                  <% if user_signed_in? %>
-                  <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list'
-                    style='margin-left: 100px; z-index: 100; color: red'>
+                    <a href='/profile/bookmarked-recipes' data-toggle="tooltip" title='Bookmarked recipes list'
+                      style='margin-left: 10px; z-index: 100; color: white'>
                     <span style="position: relative">
                       <i style="display:inline" class='fas fa-heart fa-2x'></i>
                       <span
                         style="position: absolute; right: -20px; top: -12px">(<%= current_user.bookmarks.count %>)</span>
                     </span>
                   </a>
-                  <% end %>
-                </div>
-
-                <!-- Nav Start -->
-                <div class="classynav col-lg-2">
-                  <!-- <ul>
-                    <li><%= link_to("Home", home_url) %></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Categories</a>
-                      <ul class="dropdown">
-                        <% Category.all.each do |category| %>
-                        <li><%= link_to(category.name, "#")  %></li>
-                        <% end %>
-                      </ul>
-                    </li>
-                    <li><a href="/recipes">Recipes</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                  </ul> -->
-
-                  <!-- Login/Register -->
-                  <div class="login-area">
-                    <% if user_signed_in? %>
-
-                    <div class="dropdown show">
-                      <a class="btn dropdown-toggle" href="https://example.com" id="dropdownMenuLink"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img style="max-width: 40px; margin-right: 15px" src="<%= current_user.avatar %>"><%= current_user.username %></a> <div
-                          class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <%= link_to("Profile","/profile", class: "dropdown-item") %>
-                        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
-                    </div>
                   </div>
-                  <% else %>
-                  <%= link_to("Login / Register","/users/sign_in") %>
-                  <% end %>
-                </div>
+                <% else %>
+                  <%= link_to("Login","/users/sign_in", style: "color:white;") %>
+                <% end %>
               </div>
-              <!-- Nav End -->
             </div>
+          </div>
+
         </div>
-        </nav>
       </div>
     </div>
-    </div>
+
+    <!-- Logo Area -->
   </header>
 
   <%= yield %>
@@ -153,7 +111,6 @@
           <div class="footer-nav">
             <ul>
               <li class="active"><a href="#">Home</a></li>
-              <li><a href="#">Recipes</a></li>
               <li><a href="#">About Us</a></li>
               <li><a href="#">Blog</a></li>
               <li><a href="#">Contact</a></li>

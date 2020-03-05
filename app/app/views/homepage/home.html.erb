@@ -1,36 +1,241 @@
-<!-- ##### Hero Area Start ##### -->
-<div class="hero-area">
-  <!-- Hero Post Slides -->
-  <div class="hero-post-slides owl-carousel">
-    <% Category.all.each do |category| %>
-      <!-- Single Slide -->
-      <div class="single-slide">
-        <!-- Blog Thumbnail -->
-        <div class="blog-thumbnail">
-          <a href="#"><img src="/assets/bg-img/<%= rand(3) + 1 %>.jpg" alt=""></a>
+<div id="pages__home">
+  <div class="pages__home__hero" style="background-image: url(<%= asset_url('bg-img/herobg.jpg', type: :image) %>);">
+    <h1>Hãy tìm những quyển sách bạn yêu thích</h1>
+    <p>Enter a book you like and the site will analyse our huge database of real readers' favorite books to provide book<br> recommendations and suggestions for what to read next.</p>
+    <p>Start typing the title or the author of a book you like, and click on the link underneath which matches best.<br>If several similar results are shown, click the highest one.</p>
+    <div class='search-box-container'>
+      <form class="form full-width" action="/recipes" method="get">
+        <div class="input-group md-form form-sm form-1 pl-0">
+          <div class="input-group-prepend">
+            <span class="input-group-text cyan lighten-2" id="basic-text1" style="background-color: #4dd0e1 !important;">
+              <i class="fas fa-search text-white" aria-hidden="true"></i>
+            </span>
+          </div>
+          <input class="form-control form-control-lg" type="text" placeholder="Hãy nhập tên quyển sách hay tác giả bạn thích" aria-label="Search">
         </div>
+      </form>
+    </div>
+  </div>
 
-        <!-- Blog Content -->
-        <div class="blog-content-bg">
-          <div class="blog-content">
-            <a href="<%= recipes_path params: {query: category.name, type: :category} %>" class="post-title"><%= category.name %></a>
-            <p class="description"><%= category.description %></p>
+  <!-- ##### Hero Area Start ##### -->
+  <div style='padding: 60px 15px 45px 15px;'>
+    <h2 class="section-title text-center">Sách được ưa thích</h2>
+    <div class="hero-area">
+      <!-- Hero Post Slides -->
+      <div class="hero-post-slides owl-carousel">
+        <!-- Single Slide -->
+        <div class="single-slide">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <a href="#"><img src="assets/bg-img/book1.jpg" alt=""></a>
+          </div>
+          <!-- Blog Content -->
+        </div>
+        <!-- Single Slide -->
+        <div class="single-slide">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <a href="#"><img src="assets/bg-img/book2.jpg" alt=""></a>
+          </div>
+          <!-- Blog Content -->
+        </div>
+        <!-- Single Slide -->
+        <div class="single-slide">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <a href="#"><img src="assets/bg-img/book3.jpg" alt=""></a>
+          </div>
+          <!-- Blog Content -->
+        </div>
+        <!-- Single Slide -->
+        <div class="single-slide">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <a href="#"><img src="assets/bg-img/book4.jpg" alt=""></a>
+          </div>
+          <!-- Blog Content -->
+        </div>
+        <div class="single-slide">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <a href="#"><img src="assets/bg-img/book1.jpg" alt=""></a>
+          </div>
+          <!-- Blog Content -->
+        </div>
+        <div class="single-slide">
+          <!-- Blog Thumbnail -->
+          <div class="blog-thumbnail">
+            <a href="#"><img src="assets/bg-img/book5.jpg" alt=""></a>
+          </div>
+          <!-- Blog Content -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ##### Hero Area End ##### -->
+
+  <div class='bg-light' style='padding: 60px 15px 45px 15px;'>
+    <h2 class="section-title text-center">Thể loại được ưa thích</h2>
+    <!-- ##### Catagory Area Start ##### -->
+    <div class="post-catagory section-padding-100-0 mb-70">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- Single Post Catagory -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="single-post-catagory mb-30">
+              <!-- Content -->
+              <div class="catagory-content-bg">
+                <div class="catagory-content">
+                  <a href="#" class="post-title" style="font-size:16px;">Science Fiction</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Single Post Catagory -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="single-post-catagory mb-30">
+              <!-- Content -->
+              <div class="catagory-content-bg">
+                <div class="catagory-content">
+                  <a href="#" class="post-title" style="font-size:16px;">Human Alien Encounter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Single Post Catagory -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="single-post-catagory mb-30">
+              <!-- Content -->
+              <div class="catagory-content-bg">
+                <div class="catagory-content">
+                  <a href="#" class="post-title" style="font-size:16px;">Adventure Stories</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Single Post Catagory -->
+          <div class="col-12 col-md-6 col-lg-3">
+            <div class="single-post-catagory mb-30">
+              <!-- Content -->
+              <div class="catagory-content-bg">
+                <div class="catagory-content">
+                  <a href="#" class="post-title" style="font-size:16px;">Fantasy Fiction</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
+    </div>
+    <!-- ##### Catagory Area End ##### -->
   </div>
-</div>
-<!-- ##### Hero Area End ##### -->
 
-<!-- ##### Catagory Area Start ##### -->
-<div class="post-catagory section-padding-100-0 mb-70">
-  <div class="container">
-    <h3 class="custom-h3 mb-30">Recommended</h3>
-    <div class="row justify-content-center">
-      <!-- Single Post Catagory -->
-      <%= render 'recipes/recipe_list', recipes: @recipes %>
+  <!-- ##### Posts Area End ##### -->
+  <div class='bg-light' style='padding: 60px 15px 45px 15px;'>
+    <h2 class="section-title text-center">Bài blog mới</h2>
+    <div class="bueno-post-area mt-30 mb-70">
+      <div class="container">
+        <div class="row justify-content-center">
+          <!-- Post Area -->
+          <div class="col-12 col-xl-6">
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-1 shadow d-flex flex-wrap mb-30 mr-30">
+              <!-- Blog Thumbnail -->
+              <div class="blog-thumbnail">
+                <img src="assets/bg-img/9.jpg" alt="">
+              </div>
+              <!-- Blog Content -->
+              <div class="blog-content" style="padding:20px;">
+                <a href="#" class="post-title">Friend eggs with ham</a>
+                <div class="post-meta">
+                  <a href="#" class="post-date">July 11, 2018</a>
+                  <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+              </div>
+            </div>
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-1 shadow d-flex flex-wrap mb-30 mr-30">
+              <!-- Blog Thumbnail -->
+              <div class="blog-thumbnail">
+                <img src="assets/bg-img/10.jpg" alt="">
+              </div>
+              <!-- Blog Content -->
+              <div class="blog-content" style="padding:20px;">
+                <a href="#" class="post-title">Mushrooms with pork chop</a>
+                <div class="post-meta">
+                  <a href="#" class="post-date">July 11, 2018</a>
+                  <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+              </div>
+            </div>
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-1 shadow d-flex flex-wrap mb-30 mr-30">
+              <!-- Blog Thumbnail -->
+              <div class="blog-thumbnail">
+                <img src="assets/bg-img/11.jpg" alt="">
+              </div>
+              <!-- Blog Content -->
+              <div class="blog-content" style="padding:20px;">
+                <a href="#" class="post-title">Birthday cake with chocolate</a>
+                <div class="post-meta">
+                  <a href="#" class="post-date">July 11, 2018</a>
+                  <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-xl-6">
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-1 shadow d-flex flex-wrap mb-30 mr-30">
+              <!-- Blog Thumbnail -->
+              <div class="blog-thumbnail">
+                <img src="assets/bg-img/9.jpg" alt="">
+              </div>
+              <!-- Blog Content -->
+              <div class="blog-content" style="padding:20px;">
+                <a href="#" class="post-title">Friend eggs with ham</a>
+                <div class="post-meta">
+                  <a href="#" class="post-date">July 11, 2018</a>
+                  <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+              </div>
+            </div>
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-1 shadow d-flex flex-wrap mb-30 mr-30">
+              <!-- Blog Thumbnail -->
+              <div class="blog-thumbnail">
+                <img src="assets/bg-img/10.jpg" alt="">
+              </div>
+              <!-- Blog Content -->
+              <div class="blog-content" style="padding:20px;">
+                <a href="#" class="post-title">Mushrooms with pork chop</a>
+                <div class="post-meta">
+                  <a href="#" class="post-date">July 11, 2018</a>
+                  <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+              </div>
+            </div>
+            <!-- Single Blog Post -->
+            <div class="single-blog-post style-1 shadow d-flex flex-wrap mb-30 mr-30">
+              <!-- Blog Thumbnail -->
+              <div class="blog-thumbnail">
+                <img src="assets/bg-img/11.jpg" alt="">
+              </div>
+              <!-- Blog Content -->
+              <div class="blog-content" style="padding:20px;">
+                <a href="#" class="post-title">Birthday cake with chocolate</a>
+                <div class="post-meta">
+                  <a href="#" class="post-date">July 11, 2018</a>
+                  <a href="#" class="post-author">By Julia Stiles</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <!-- ##### Posts Area End ##### -->
 </div>
-<!-- ##### Catagory Area End ##### --> 
+

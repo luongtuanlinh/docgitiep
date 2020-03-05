@@ -46,7 +46,7 @@
         var albumSlides = $('.albums-slideshow');
 
         welcomeSlide.owlCarousel({
-            items: 3,
+            items: 5,
             margin: 30,
             loop: true,
             nav: true,
@@ -61,10 +61,10 @@
                     items: 1
                 },
                 768: {
-                    items: 2
+                    items: 3
                 },
                 992: {
-                    items: 3
+                    items: 5
                 }
             }
         });
