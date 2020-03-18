@@ -64,4 +64,8 @@ Rails.application.routes.draw do
 #   get 'contact', action: :contact, controller: 'homepage'
 #   get 'recipe', action: :recipe, controller: 'homepage'
 
+  # Crawler
+  get 'crawler/alphabook', action: :alphabook_crawler, controller: 'crawlers'
+  get 'crawler/tiki', action: :tiki_crawler, controller: 'crawlers'
+
 end
