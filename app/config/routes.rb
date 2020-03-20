@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   # recipes
   resources :recipes, only: [:index, :show]
-  get 'author', action: :author, controller: 'recipes'
+  # get 'author', action: :author, controller: 'recipes'
 
   # comments
   resources :comments
@@ -35,7 +35,8 @@ Rails.application.routes.draw do
 
   put 'comments/:id/update-reply', action: :update_reply, controller: 'comments'
 
-
+  # books
+  resources :books, only: [:index, :show]
 
   #Templates
   # premium

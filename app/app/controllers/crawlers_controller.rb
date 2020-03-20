@@ -60,23 +60,25 @@ class CrawlersController < ApplicationController
     @subject_array = []
 
     child_book_categories = book_list_page.search "#collapse-category .list-group-item.is-child"
-
+    # binding.pry
     child_book_categories.each_with_index do |category, index|
       book_list_page = agent.click(category.at('a.list-group-item'))
-      puts category.at('a.list-group-item').attributes["href"].text + ' (' + ((index+1)*100/child_book_categories.count()).to_s + '%)'
+      puts category.at('a.list-group-item').attributes["href"]&.text + ' (' + ((index+1)*100/child_book_categories.count()).to_s + '%)'
       while true
         book_list = book_list_page.search ".product-box-list .product-item"
         # binding.pry
         book_list.each do |book|
-          title = book.attributes["data-title"].text
-          image = book.at("img.product-image").attributes["src"].text
-          subjects = book.attributes['data-category'].text.split('/');
+          title = book.attributes["data-title"]&.text
+          next if title.downcase.include?('combo') || title.downcase.include?('bộ sách')
+          subjects = book.attributes['data-category']&.text&.split('/');
           subjects.map! {|subject| subject.strip }
+          subjects.shift
 
           # Access book detail
           book_detail = agent.click(book.at "a")
-          description = book_detail.at("#gioi-thieu").inner_html
-          author = book_detail.at('.product-brand-block').search('.brand-block-row').last().at('a').text
+          description = book_detail.at("#gioi-thieu")&.inner_html
+          author = book_detail.at('.product-brand-block').search('.brand-block-row').last().at('a')&.text
+          image = book_detail.at(".product-image").at("img#product-magiczoom").attributes["data-zoom-image"]&.text
 
           book_data = { name: title, image: image, description: description }
 
@@ -106,9 +108,14 @@ class CrawlersController < ApplicationController
           @book_array << book_data
         end
 
+        break if @book_array.count() > 200
         break unless book_list_page.at('.list-pager a.next')
         book_list_page = agent.click(book_list_page.at('.list-pager a.next'))
       end
+
+      # Limit book count
+      break if @book_array.count() > 200
+
     end
 
     render plain: @book_array

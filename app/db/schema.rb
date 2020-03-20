@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_162922) do
 
   create_table "bookmarks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "recipe_id"
+    t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,13 +48,6 @@ ActiveRecord::Schema.define(version: 2020_03_17_162922) do
     t.bigint "book_id", null: false
     t.index ["book_id", "subject_id"], name: "index_books_subjects_on_book_id_and_subject_id"
     t.index ["subject_id", "book_id"], name: "index_books_subjects_on_subject_id_and_book_id"
-  end
-
-  create_table "books_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "book_id", null: false
-    t.index ["book_id", "user_id"], name: "index_books_users_on_book_id_and_user_id"
-    t.index ["user_id", "book_id"], name: "index_books_users_on_user_id_and_book_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

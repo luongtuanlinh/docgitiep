@@ -1821,3 +1821,21 @@ h3 {
   display: block;
   margin: 20px auto;
 }
+
+.category-link-btn {
+  background-color: #D8D8D8;
+  padding: 4px 16px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #4C4C4C;
+  margin: 0px 4px 4px 0px;
+  margin-top: 20px;
+  font-style: italic;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.category-link-btn:hover {
+  background-color: #4C4C4C;
+  color: white !important;
+}
