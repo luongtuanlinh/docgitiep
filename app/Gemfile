@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'pry'
 gem 'pry-rails'
 gem 'sendgrid-ruby'
+gem 'rubyzip'
+gem 'caxlsx_rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

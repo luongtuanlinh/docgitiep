@@ -69,4 +69,6 @@ Rails.application.routes.draw do
   get 'crawler/alphabook', action: :alphabook_crawler, controller: 'crawlers'
   get 'crawler/tiki', action: :tiki_crawler, controller: 'crawlers'
 
+  # Export excel
+  get 'export', action: :index, controller: 'export'
 end
